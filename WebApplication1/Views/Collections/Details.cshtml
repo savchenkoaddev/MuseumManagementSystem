@@ -1,0 +1,19 @@
+﻿@model WebApplication1.Models.Collection
+@{
+    Layout = "_Layout";
+}
+
+<h4>Деталі колекції</h4>
+<hr />
+<div class="card shadow-sm">
+    <div class="card-body">
+        <h5 class="card-title">@Model.Name</h5>
+        <p class="card-text">@Model.Description</p>
+    </div>
+</div>
+
+<div class="mt-3">
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning me-1">Редагувати</a>
+    <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger me-1">Видалити</a>
+    <a asp-action="Index" class="btn btn-secondary">Назад</a>
+</div>

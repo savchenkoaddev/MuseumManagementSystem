@@ -1,0 +1,86 @@
+﻿@model WebApplication1.Models.Exponat
+
+@{
+    ViewData["Title"] = "Додати експонат";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm border-0">
+                <div class="card-header bg-primary text-white text-center">
+                    <h4 class="mb-0">@ViewData["Title"]</h4>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Create">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                        <div class="mb-3">
+                            <label asp-for="Name" class="form-label">Назва</label>
+                            <input asp-for="Name" class="form-control" placeholder="Введіть назву експонату" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Description" class="form-label">Опис</label>
+                            <input asp-for="Description" class="form-control" placeholder="Короткий опис" />
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Material" class="form-label">Матеріал</label>
+                            <input asp-for="Material" class="form-control" placeholder="Матеріал виготовлення" />
+                            <span asp-validation-for="Material" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Technique" class="form-label">Техніка</label>
+                            <input asp-for="Technique" class="form-control" placeholder="Техніка виготовлення" />
+                            <span asp-validation-for="Technique" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="CreationYear" class="form-label">Рік створення</label>
+                            <input asp-for="CreationYear" class="form-control" placeholder="Рік" />
+                            <span asp-validation-for="CreationYear" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Condition" class="form-label">Стан</label>
+                            <input asp-for="Condition" class="form-control" placeholder="Стан експонату" />
+                            <span asp-validation-for="Condition" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="AuthorId" class="form-label">Автор</label>
+                            <select asp-for="AuthorId" class="form-select" asp-items="ViewBag.AuthorId"></select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="CollectionId" class="form-label">Колекція</label>
+                            <select asp-for="CollectionId" class="form-select" asp-items="ViewBag.CollectionId"></select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="LocationId" class="form-label">Локація</label>
+                            <select asp-for="LocationId" class="form-select" asp-items="ViewBag.LocationId"></select>
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary">Зберегти</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer text-center bg-light">
+                    <a asp-action="Index" class="btn btn-link">Назад до списку</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,35 @@
+﻿@model WebApplication1.Models.Author
+
+@{
+    Layout = "_Layout";
+}
+
+<div class="container my-5">
+    <div class="card shadow rounded-4 p-4 mx-auto" style="max-width:600px;">
+        <h3 class="card-title text-center mb-4 text-danger">Видалення автора</h3>
+        <p class="text-center">Ви впевнені, що хочете видалити цього автора?</p>
+
+        <dl class="row">
+            <dt class="col-sm-3">Ім'я:</dt>
+            <dd class="col-sm-9">@Model.FirstName</dd>
+
+            <dt class="col-sm-3">Прізвище:</dt>
+            <dd class="col-sm-9">@Model.LastName</dd>
+
+            <dt class="col-sm-3">Рік народження:</dt>
+            <dd class="col-sm-9">@Model.BirthYear</dd>
+
+            <dt class="col-sm-3">Рік смерті:</dt>
+            <dd class="col-sm-9">@Model.DeathYear</dd>
+
+            <dt class="col-sm-3">Біографія:</dt>
+            <dd class="col-sm-9">@Model.Biography</dd>
+        </dl>
+
+        <form asp-action="Delete" method="post" class="text-center mt-4">
+            <input type="hidden" asp-for="Id" />
+            <input type="submit" class="btn btn-danger px-4 me-2" value="Видалити" />
+            <a asp-action="Index" class="btn btn-secondary px-4">Назад</a>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+﻿@model WebApplication1.Models.Location
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Видалити місце зберігання";
+}
+
+<div class="card shadow-sm mx-auto mt-5" style="max-width: 600px;">
+    <div class="card-header bg-danger text-white">
+        <h5 class="mb-0">Видалити місце зберігання</h5>
+    </div>
+    <div class="card-body">
+        <h6>Ви впевнені, що хочете видалити це місце?</h6>
+        <dl class="row mt-3">
+            <dt class="col-sm-4">Назва</dt>
+            <dd class="col-sm-8">@Model.Name</dd>
+
+            <dt class="col-sm-4">Адреса</dt>
+            <dd class="col-sm-8">@Model.Address</dd>
+
+            <dt class="col-sm-4">Умови зберігання</dt>
+            <dd class="col-sm-8">@Model.StorageConditions</dd>
+        </dl>
+
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="Id" />
+            <button type="submit" class="btn btn-danger">Видалити</button>
+            <a asp-action="Index" class="btn btn-secondary">Назад</a>
+        </form>
+    </div>
+</div>

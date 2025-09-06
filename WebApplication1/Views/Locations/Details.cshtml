@@ -1,0 +1,19 @@
+﻿@model WebApplication1.Models.Location
+@{
+    Layout = "_Layout";
+}
+
+<div class="card shadow-sm mb-4">
+    <div class="card-header bg-primary text-white">
+        <h4 class="mb-0">@Model.Name</h4>
+    </div>
+    <div class="card-body">
+        <p><strong>Адреса:</strong> @Model.Address</p>
+        <p><strong>Умови зберігання:</strong> @Model.StorageConditions</p>
+    </div>
+    <div class="card-footer d-flex gap-2">
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Редагувати</a>
+        <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Видалити</a>
+        <a asp-action="Index" class="btn btn-secondary">Назад</a>
+    </div>
+</div>

@@ -1,0 +1,53 @@
+﻿@model WebApplication1.Models.Author
+@{
+    Layout = "_Layout";
+}
+
+<h3>Створити нового автора</h3>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+            <div class="mb-3">
+                <label for="FirstName" class="form-label">Ім'я</label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label for="LastName" class="form-label">Прізвище</label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label for="BirthYear" class="form-label">Рік народження</label>
+                <input asp-for="BirthYear" class="form-control" />
+                <span asp-validation-for="BirthYear" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label for="DeathYear" class="form-label">Рік смерті</label>
+                <input asp-for="DeathYear" class="form-control" />
+                <span asp-validation-for="DeathYear" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label for="Biography" class="form-label">Біографія</label>
+                <textarea asp-for="Biography" class="form-control" rows="4"></textarea>
+                <span asp-validation-for="Biography" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-success">Створити</button>
+            <a asp-action="Index" class="btn btn-secondary ms-2">Назад</a>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

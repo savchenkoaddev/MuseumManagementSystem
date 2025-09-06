@@ -1,0 +1,84 @@
+﻿@using System.Linq
+@model IEnumerable<WebApplication1.Models.Exponat>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container py-5">
+    <div class="text-center mb-5">
+        <h1 class="display-4 fw-bold mb-3">Ласкаво просимо до Музею</h1>
+        <p class="lead mb-4">
+            Керуйте експонатами, авторами, колекціями та місцями зберігання легко та швидко.
+        </p>
+        <a asp-controller="Exponats" asp-action="Index" class="btn btn-primary btn-lg me-2">Переглянути експонати</a>
+        <a asp-controller="Exponats" asp-action="Create" class="btn btn-success btn-lg">Додати експонат</a>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-md-3">
+            <div class="card text-center h-100 shadow-sm border-0">
+                <div class="card-body d-flex flex-column justify-content-center">
+                    <i class="bi bi-box-seam display-3 mb-3 text-primary"></i>
+                    <h5 class="card-title">Експонати</h5>
+                    <p class="card-text">Переглядайте та редагуйте всі експонати музею.</p>
+                    <a asp-controller="Exponats" asp-action="Index" class="btn btn-outline-primary mt-auto">Перейти</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card text-center h-100 shadow-sm border-0">
+                <div class="card-body d-flex flex-column justify-content-center">
+                    <i class="bi bi-person-badge display-3 mb-3 text-success"></i>
+                    <h5 class="card-title">Автори</h5>
+                    <p class="card-text">Переглядайте та керуйте авторами експонатів.</p>
+                    <a asp-controller="Authors" asp-action="Index" class="btn btn-outline-success mt-auto">Перейти</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card text-center h-100 shadow-sm border-0">
+                <div class="card-body d-flex flex-column justify-content-center">
+                    <i class="bi bi-collection display-3 mb-3 text-warning"></i>
+                    <h5 class="card-title">Колекції</h5>
+                    <p class="card-text">Керуйте колекціями та їх описами.</p>
+                    <a asp-controller="Collections" asp-action="Index" class="btn btn-outline-warning mt-auto">Перейти</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card text-center h-100 shadow-sm border-0">
+                <div class="card-body d-flex flex-column justify-content-center">
+                    <i class="bi bi-geo-alt display-3 mb-3 text-danger"></i>
+                    <h5 class="card-title">Місця зберігання</h5>
+                    <p class="card-text">Переглядайте та редагуйте інформацію про місця зберігання.</p>
+                    <a asp-controller="Locations" asp-action="Index" class="btn btn-outline-danger mt-auto">Перейти</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-5">
+        <h3 class="mb-4 text-center">Останні додані експонати</h3>
+        <div class="d-flex flex-row overflow-auto gap-3 pb-3">
+            @foreach (var item in Model.Take(6))
+            {
+                <div class="card shadow-sm border-0" style="min-width: 250px;">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.Name</h5>
+                        <p class="card-text">
+                            <strong>Автор:</strong> <a asp-controller="Authors" asp-action="Details" asp-route-id="@item.AuthorId">@item.Author.FirstName @item.Author.LastName</a><br />
+                            <strong>Колекція:</strong> <a asp-controller="Collections" asp-action="Details" asp-route-id="@item.CollectionId">@item.Collection.Name</a><br />
+                            <strong>Рік:</strong> @item.CreationYear
+                        </p>
+                        <a asp-controller="Exponats" asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary btn-sm">Деталі</a>
+
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    </div>
+</div>

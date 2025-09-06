@@ -1,0 +1,59 @@
+﻿@model WebApplication1.Models.Exponat
+
+@{
+    ViewData["Title"] = "Деталі експонату";
+}
+
+<div class="container mt-4">
+    <div class="card shadow-sm border-0 rounded-3">
+        <div class="card-header bg-primary text-white">
+            <h3 class="mb-0">Деталі експонату</h3>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3 fw-bold">Назва</dt>
+                <dd class="col-sm-9">@Model.Name</dd>
+
+                <dt class="col-sm-3 fw-bold">Опис</dt>
+                <dd class="col-sm-9">@Model.Description</dd>
+
+                <dt class="col-sm-3 fw-bold">Матеріал</dt>
+                <dd class="col-sm-9">@Model.Material</dd>
+
+                <dt class="col-sm-3 fw-bold">Техніка</dt>
+                <dd class="col-sm-9">@Model.Technique</dd>
+
+                <dt class="col-sm-3 fw-bold">Рік створення</dt>
+                <dd class="col-sm-9">@Model.CreationYear</dd>
+
+                <dt class="col-sm-3 fw-bold">Стан</dt>
+                <dd class="col-sm-9">@Model.Condition</dd>
+
+                <dt class="col-sm-3 fw-bold">Автор</dt>
+                <dd class="col-sm-9">
+                    <a asp-controller="Authors" asp-action="Details" asp-route-id="@Model.Author.Id" class="text-decoration-none">
+                        @Model.Author.FirstName @Model.Author.LastName
+                    </a>
+                </dd>
+
+                <dt class="col-sm-3 fw-bold">Колекція</dt>
+                <dd class="col-sm-9">
+                    <a asp-controller="Collections" asp-action="Details" asp-route-id="@Model.Collection.Id" class="text-decoration-none">
+                        @Model.Collection.Name
+                    </a>
+                </dd>
+
+                <dt class="col-sm-3 fw-bold">Локація</dt>
+                <dd class="col-sm-9">
+                    <a asp-controller="Locations" asp-action="Details" asp-route-id="@Model.Location.Id" class="text-decoration-none">
+                        @Model.Location.Address
+                    </a>
+                </dd>
+            </dl>
+        </div>
+        <div class="card-footer text-end">
+            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning me-2">Редагувати</a>
+            <a asp-action="Index" class="btn btn-secondary">Назад до списку</a>
+        </div>
+    </div>
+</div>

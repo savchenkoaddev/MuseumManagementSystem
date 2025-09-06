@@ -1,0 +1,43 @@
+﻿@model WebApplication1.Models.Location
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Додати місце зберігання";
+}
+
+<div class="card shadow-sm mx-auto mt-5" style="max-width: 600px;">
+    <div class="card-header bg-success text-white">
+        <h5 class="mb-0">Додати місце зберігання</h5>
+    </div>
+    <div class="card-body">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+            <div class="mb-3">
+                <label asp-for="Name" class="form-label">Назва</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Address" class="form-label">Адреса</label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="StorageConditions" class="form-label">Умови зберігання</label>
+                <textarea asp-for="StorageConditions" class="form-control"></textarea>
+                <span asp-validation-for="StorageConditions" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-success">Створити</button>
+            <a asp-action="Index" class="btn btn-secondary">Назад</a>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
